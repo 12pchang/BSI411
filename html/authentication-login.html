@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SYNOPTIC</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/LOGO.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+
+  <meta charset="UTF-8">
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <title>Login with Azure AD</title>
+                      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    
+    <div
+    
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0">
+              <div class="card-body">
+ 
+                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <img src="../assets/images/logos/LOGO.png" width="100" alt="">
+                </a>
+                <p class="text-center">SYNOPTIC PROJECT</p>
+    
+               
+                  <button onclick="login()"class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Login</button></a>
+
+                  
+                 
+                      
+                 
+                  <body>
+
+                  
+                      <script>
+                          // Azure AD configuration
+                          const clientId = 'ca48eb55-1540-4566-9528-0d443c11eda3';
+                          const redirectUri = 'file:///C:/Users/sophi/Downloads/TECNO/Modernize-1.0.0/src/html/index.html'; // Replace with your redirect URI
+                          const tenantId = '69587499-a807-43e6-b603-680dc411b8b1';
+                          const loginUrl = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize`;
+                  
+                          // Function to initiate login
+                          function login() {
+                              const queryParams = {
+                                  client_id: clientId,
+                                  response_type: 'id_token',
+                                  redirect_uri: redirectUri,
+                                  response_mode: 'fragment',
+                                  scope: 'openid profile email',
+                                  nonce: '123', // Include nonce for security
+                              };
+                              const queryString = $.param(queryParams);
+                              const loginRedirectUrl = `${loginUrl}?${queryString}`;
+                              window.location.href = loginRedirectUrl;
+                          }
+                  
+                          // Function to handle login response
+                          function handleLoginResponse() {
+                              const idToken = window.location.hash.substr(1).split('&')[0].split('=')[1];
+                              // Validate and decode the ID token (you may need a library for this)
+                              // Extract user information from the ID token
+                              console.log('ID token:', idToken);
+                          }
+                  
+                          // Call handleLoginResponse when the page loads to handle the login response
+                          handleLoginResponse();
+                      </script>
+                  </body>
+                  </html>
+                  
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

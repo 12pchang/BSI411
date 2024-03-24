@@ -1,0 +1,36 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneDrive API Example</title>
+</head>
+<body>
+    <button onclick="authenticate()">Authenticate with OneDrive</button>
+
+    <script>
+        function authenticate() {
+            var clientId = 'YOUR_CLIENT_ID';
+            var redirectUri = 'YOUR_REDIRECT_URI';
+            var scopes = 'files.read';
+
+            var authUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';
+            authUrl += '?client_id=' + encodeURIComponent(clientId);
+            authUrl += '&response_type=token';
+            authUrl += '&redirect_uri=' + encodeURIComponent(redirectUri);
+            authUrl += '&scope=' + encodeURIComponent(scopes);
+
+            window.location.href = authUrl;
+        }
+
+        function handleRedirect() {
+            var accessToken = window.location.hash.substring(1).split('&')[0].split('=')[1];
+            // Use the access token to make API requests
+            console.log("Access Token: " + accessToken);
+        }
+
+        // Call handleRedirect when the page loads to handle the authentication redirect
+        handleRedirect();
+    </script>
+</body>
+</html>
